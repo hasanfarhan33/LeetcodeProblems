@@ -53,10 +53,3 @@ def romanToIntegerNeetcode(s):
 
 # print(romanToInteger(s))
 print(romanToIntegerNeetcode(s))
-
-stack = []
-stack.append(4)
-stack.append(2)
-stack.append(4)
-stack.append(4)
-print(stack.__contains__())
