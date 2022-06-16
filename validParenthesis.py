@@ -62,4 +62,19 @@ def validParenthesisWithoutStack(s:str):
         return False
 
 
-print(validParenthesisWithoutStack(s))
+def validParenthesisWithHash(s):
+    stack = []
+    brackets = {')':'(',
+                '}':'{',
+                ']':'['}
+    for c in s:
+        if c in brackets:
+            if not stack:
+                return False
+            elif stack and stack[-1] == brackets[c]:
+                stack.pop()
+        else:
+            stack.append(c)
+    return True if not stack else False
+
+print(validParenthesisWithHash(s))
