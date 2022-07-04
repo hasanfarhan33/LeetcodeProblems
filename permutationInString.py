@@ -5,8 +5,8 @@ permutation of s1, or false otherwise.
 In other words, return true if one of s1's permutations is the substring of s2.
 '''
 
-s1 = "ab"
-s2 = "eidbaooo"
+s1 = "abc"
+s2 = "bbbca"
 
 def checkInclusion(s1:str, s2:str) -> bool:
     s1Hash = {}
@@ -45,6 +45,7 @@ def checkInclusionNeetcode(s1: str, s2:str) -> bool:
         matches += (1 if s1Count[i] == s2Count[i] else 0 )
 
     left = 0
+    # Starting from the next character after creating the hash arrays (s1Count, s2Count)
     for right in range(len(s1), len(s2)):
         if matches == 26: return True
 

@@ -3,14 +3,17 @@ k = 2
 
 def characterReplacement(s:str, k:int):
     count = {}
-    i = 0
+    left = 0
     res = 0
-    for j in range(len(s)):
-        count[s[j]] = 1 + count.get(s[j], 0)
-        if (j-i+1) - max(count.values()) > k:
-            count[s[i]] -= 1
-            i += 1
-        res = max(res, j - i + 1)
+    maxFreq = 0
+    for right in range(len(s)):
+        count[s[right]] = 1 + count.get(s[right], 0)
+        maxFreq = max(maxFreq, count[s[right]])
+
+        while (right - left + 1) - maxFreq > k:
+            count[s[left]] -= 1
+            left += 1
+        res = max(res, right - left + 1)
     return res
 
 
