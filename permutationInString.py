@@ -5,6 +5,9 @@ permutation of s1, or false otherwise.
 In other words, return true if one of s1's permutations is the substring of s2.
 '''
 
+from typing import Counter
+
+
 s1 = "abc"
 s2 = "bbbca"
 
@@ -67,5 +70,27 @@ def checkInclusionNeetcode(s1: str, s2:str) -> bool:
         left +=1
     return matches == 26
 
+def checkInclusionHashMap(s1: str, s2: str) -> bool: 
+        s1_map = Counter(s1)
+        s2_map = Counter()
+
+        if len(s1) > len(s2):
+            return False
+
+        for i in range(len(s2)):
+            s2_map[s2[i]] += 1
+            if i >= len(s1):
+                if s2_map[s2[i - len(s1)]] > 1:
+                    s2_map[s2[i - len(s1)]] -= 1                    
+                else:
+                    del s2_map[s2[i - len(s1)]]
+            if s1_map == s2_map:
+                return True 
+
+        return False
+
+
+        
+
 # checkInclusion(s1, s2)
-print(checkInclusionNeetcode(s1, s2))
+print(checkInclusionHashMap(s1, s2))
