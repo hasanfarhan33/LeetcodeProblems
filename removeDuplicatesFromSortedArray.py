@@ -1,12 +1,16 @@
-arr = [39, 4, 23, 12, 49, 38, 39, 10]
-nums = sorted(arr)
+# LEETCODE 26: Removing Duplicated from sorted array 
+
+nums = [0,0,1,1,1,2,2,3,3,4]
+
 
 def removeDuplicates(nums)->int:
-    x = 1
-    for r in range(1, len(nums)):
-        if nums[r] != nums[r - 1]:
-            nums[x] = nums[r]
-            x+=1
-    return x
+    leftPointer = 1 
+    
+    for rightPointer in range(1, len(nums)): 
+        if nums[rightPointer] != nums[rightPointer - 1]: 
+            nums[leftPointer] = nums[rightPointer]
+            leftPointer += 1 
+    
+    return leftPointer 
 
 removeDuplicates(nums)
